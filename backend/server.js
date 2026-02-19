@@ -1,14 +1,18 @@
-import express from 'express';
-import cors from 'cors';
-import authRoutes from './auth/auth.js';
+import express from "express";
+import cors from "cors";
+import authRoutes from "./routes/auth.js";
 
 const app = express();
-
 app.use(cors());
-app.use(express.json());
 
-app.use('/auth', authRoutes);
+app.use(cors({
+  origin: "http://localhost:5173", 
+  credentials: true,
+}));
 
-app.listen(5000, () => {
-  console.log('Server running on port 5000');
+app.use(express.json()); 
+app.use("/api/auth", authRoutes);
+
+app.listen(1573, () => {
+  console.log("Backend running on http://localhost:1573");
 });

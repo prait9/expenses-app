@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { login } from "./authService";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -21,6 +21,9 @@ export default function Login() {
   return (
     <form onSubmit={handleSubmit}>
       <h2>Login</h2>
+      <p>
+        Don't have an account? <Link to="/register">Register</Link>
+      </p>
 
       {error && <p style={{ color: "red" }}>{error}</p>}
 
